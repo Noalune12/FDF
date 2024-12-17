@@ -102,7 +102,8 @@ int		error_handler_param(int error_code, t_params *params);
 int		parse_map(t_map ***map, t_params *params, char *file);
 int		get_width(char *line, int fd);
 int		allocate_y(t_map ***map, t_params *params, int fd, char *line);
-int		fill_map_var(char *line, t_map *map_row, int y, int fd);
+int		fill_map_var(char *line, t_map *map_row, int y, int width);
+int		check_map(t_map **map, t_params *params);
 
 int		init_params(t_params *params, t_map **map);
 float	calculate_scale(t_params *params);

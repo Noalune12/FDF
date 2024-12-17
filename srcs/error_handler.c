@@ -1,5 +1,29 @@
 #include "../include/fdf.h"
 
+static void error_handle_parsing_2(int error_code)
+{
+	if (error_code == 3)
+	{
+		errno = ENOMEM;
+		perror("Split failed");
+	}
+	if (error_code == 4)
+	{
+		errno = ENOMEM;
+		perror("Malloc failed");
+	}
+	if (error_code == 5)
+	{
+		errno = EINVAL;
+		perror("Map is not a rectangle");
+	}
+	if (error_code == 6)
+	{
+		errno = EINVAL;
+		perror("Map is empty");
+	}
+}
+
 int	error_handler_parsing(int error_code, int *fd)
 {
 	if (fd)
@@ -14,16 +38,7 @@ int	error_handler_parsing(int error_code, int *fd)
 		errno = EINVAL;
 		perror("No line to read");
 	}
-	if (error_code == 3)
-	{
-		errno = ENOMEM;
-		perror("Split failed");
-	}
-	if (error_code == 4)
-	{
-		errno = ENOMEM;
-		perror("Malloc failed");
-	}
+	error_handle_parsing_2(error_code);
 	errno = 0;
 	return (-1);
 }

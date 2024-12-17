@@ -19,9 +19,9 @@ int	fill_map_loop(t_map ***map, t_params *params, int fd)
 		if (!(*map)[i])
 		{
 			free(line);
-			return (error_handler_parsing(4, &fd));
+			return (error_handler_parsing(4, NULL));
 		}
-		if (fill_map_var(line, (*map)[i], i, fd) == -1)
+		if (fill_map_var(line, (*map)[i], i, params->map_info.map_width) == -1)
 			return (ft_free_line(line));
 		free(line);
 	}
@@ -36,7 +36,10 @@ static int	fill_map(t_map ***map, t_params *params, char *file)
 	if (fd == -1)
 		return (error_handler_parsing(1, NULL));
 	if (fill_map_loop(map, params, fd) == -1)
+	{
+		close(fd);
 		return (-1);
+	}
 	close(fd);
 	return (0);
 }
@@ -93,6 +96,11 @@ int	parse_map(t_map ***map, t_params *params, char *file)
 	if (allocate_map(map, params, file) == -1)
 		return (-1);
 	if (fill_map(map, params, file) == -1)
+	{
+		ft_free_t_map(*map);
+		return (-1);
+	}
+	if (check_map(*map, params) == -1)
 	{
 		ft_free_t_map(*map);
 		return (-1);

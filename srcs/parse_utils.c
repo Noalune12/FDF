@@ -37,17 +37,31 @@ static int	fill_color(char *str)
 	return (hex_to_int(&str[i]));
 }
 
-int	fill_map_var(char *line, t_map *map_row, int y, int fd)
+static void	fill_end_of_row(t_map *map_row, int i)
+{
+	map_row[i].x = -1;
+	map_row[i].y = -1;
+	map_row[i].z = -1;
+	map_row[i].color = -1;
+	map_row[i].is_end_row = 1;
+}
+
+int	fill_map_var(char *line, t_map *map_row, int y, int width)
 {
 	char	**split;
-	size_t	i;
+	int		i;
 
 	split = ft_split(line, " \n");
 	if (!split)
-		return (error_handler_parsing(3, &fd));
+		return (error_handler_parsing(3, NULL));
 	i = 0;
 	while (split[i])
 	{
+		if (i >= width)
+		{
+			ft_free_double(split);
+			return (error_handler_parsing(5, NULL));
+		}
 		map_row[i].x = i;
 		map_row[i].y = y;
 		map_row[i].z = ft_atoi(split[i]);
@@ -55,53 +69,7 @@ int	fill_map_var(char *line, t_map *map_row, int y, int fd)
 		map_row[i].is_end_row = 0;
 		i++;
 	}
-	map_row[i].x = -1;
-	map_row[i].y = -1;
-	map_row[i].z = -1;
-	map_row[i].color = -1;
-	map_row[i].is_end_row = 1;
+	fill_end_of_row(map_row, i);
 	ft_free_double(split);
-	return (0);
-}
-
-int	get_width(char *line, int fd)
-{
-	char	**split;
-	size_t	i;
-	int		x;
-
-	x = 0;
-	split = ft_split(line, " \n");
-	if (!split)
-		return (error_handler_parsing(3, &fd));
-	i = 0;
-	while (split[i])
-	{
-		x += 1;
-		i++;
-	}
-	ft_free_double(split);
-	return (x);
-}
-
-int	allocate_y(t_map ***map, t_params *params, int fd, char *line)
-{
-	int	y;
-
-	y = 1;
-	while (line != NULL)
-	{
-		line = get_next_line(fd);
-		if (line != NULL && *line != '\n')
-			y += 1;
-		free(line);
-	}
-	close(fd);
-	params->map_info.map_height = y;
-	*map = malloc((y + 1) * sizeof(t_map *));
-	if (!*map)
-		return (error_handler_parsing(4, NULL));
-	ft_bzero(*map, (y + 1) * sizeof(t_map *));
-	(*map)[y] = NULL;
 	return (0);
 }
