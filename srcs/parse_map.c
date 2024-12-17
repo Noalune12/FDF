@@ -6,7 +6,7 @@
 /*   By: lbuisson <lbuisson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:12:42 by lbuisson          #+#    #+#             */
-/*   Updated: 2024/12/17 17:12:43 by lbuisson         ###   ########lyon.fr   */
+/*   Updated: 2024/12/17 17:17:11 by lbuisson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,28 +80,28 @@ static int	allocate_map(t_map ***map, t_params *params, char *file)
 	return (0);
 }
 
-static void	get_z_min_max(t_map **map, t_params *params)
-{
-	int	i;
-	int	j;
+// static void	get_z_min_max(t_map **map, t_params *params)
+// {
+// 	int	i;
+// 	int	j;
 
-	params->map_info.z_min = map[0][0].z;
-	params->map_info.z_max = map[0][0].z;
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j].is_end_row != 1)
-		{
-			if (map[i][j].z < params->map_info.z_min)
-				params->map_info.z_min = map[i][j].z;
-			if (map[i][j].z > params->map_info.z_max)
-				params->map_info.z_max = map[i][j].z;
-			j++;
-		}
-		i++;
-	}
-}
+// 	params->map_info.z_min = map[0][0].z;
+// 	params->map_info.z_max = map[0][0].z;
+// 	i = 0;
+// 	while (map[i])
+// 	{
+// 		j = 0;
+// 		while (map[i][j].is_end_row != 1)
+// 		{
+// 			if (map[i][j].z < params->map_info.z_min)
+// 				params->map_info.z_min = map[i][j].z;
+// 			if (map[i][j].z > params->map_info.z_max)
+// 				params->map_info.z_max = map[i][j].z;
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
 
 int	parse_map(t_map ***map, t_params *params, char *file)
 {
@@ -117,6 +117,6 @@ int	parse_map(t_map ***map, t_params *params, char *file)
 		ft_free_t_map(*map);
 		return (-1);
 	}
-	get_z_min_max(*map, params);
+	// get_z_min_max(*map, params);
 	return (0);
 }
