@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error_handler.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbuisson <lbuisson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/17 17:12:23 by lbuisson          #+#    #+#             */
+/*   Updated: 2024/12/17 17:13:29 by lbuisson         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fdf.h"
 
-static void error_handle_parsing_2(int error_code)
+static void	error_handle_parsing_2(int error_code)
 {
 	if (error_code == 3)
 	{

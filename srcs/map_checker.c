@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_checker.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbuisson <lbuisson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/17 17:12:38 by lbuisson          #+#    #+#             */
+/*   Updated: 2024/12/17 17:13:50 by lbuisson         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fdf.h"
 
- int	check_map(t_map **map, t_params *params)
+int	check_map(t_map **map, t_params *params)
 {
 	int	i;
 	int	j;

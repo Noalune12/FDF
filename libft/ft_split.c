@@ -6,7 +6,7 @@
 /*   By: lbuisson <lbuisson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 07:52:58 by lbuisson          #+#    #+#             */
-/*   Updated: 2024/12/10 13:21:15 by lbuisson         ###   ########lyon.fr   */
+/*   Updated: 2024/12/17 17:15:50 by lbuisson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static size_t	countwords(char const *s, char *charset)
 	i = 0;
 	while (s[i])
 	{
-		if ((ft_is_charset(s[i], charset) == 0 &&
-			ft_is_charset(s[i + 1], charset) == 1) ||
-			(!s[i + 1] && ft_is_charset(s[i], charset) == 0))
+		if ((ft_is_charset(s[i], charset) == 0
+				&& ft_is_charset(s[i + 1], charset) == 1)
+			|| (!s[i + 1] && ft_is_charset(s[i], charset) == 0))
 			count++;
 		i++;
 	}

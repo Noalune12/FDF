@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbuisson <lbuisson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/17 17:12:06 by lbuisson          #+#    #+#             */
+/*   Updated: 2024/12/17 17:12:19 by lbuisson         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fdf.h"
 
 static void	assign_color(t_map map, int *color)
@@ -30,46 +42,17 @@ static void	draw_map_loop(t_map **map, t_params *params, int i, int j)
 	}
 }
 
-// static int	check_line_length(t_map **map, int expected_length)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = 0;
-// 	while (map[i])
-// 	{
-// 		j = 0;
-// 		while (map[i][j].is_end_row != 1)
-// 			j++;
-// 		if (j != expected_length)
-// 			return (0);
-// 		i++;
-// 	}
-// 	return (1);
-// }
-
 void	draw_map_iso(t_map **map, t_params *params)
 {
 	int	i;
 	int	j;
-	// int	expected_length;
 
-	// expected_length = 0;
-	// while (map[0][expected_length].is_end_row != 1)
-	// 	expected_length++;
-
-	// if (!check_line_length(map, expected_length))
-	// {
-	// 	ft_putstr_fd("Error: Map is not rectangular.\n", 2);
-	// 	return ;
-	// }
 	i = 0;
 	while (map[i])
 	{
 		j = 0;
 		while (map[i][j].is_end_row != 1)
 		{
-			// if (map[i + 1][j].is_end_row != 1)
 			draw_map_loop(map, params, i, j);
 			j++;
 		}
