@@ -2,8 +2,10 @@ NAME = fdf
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
+SRCS_DIR = srcs
 SRCS = main.c error_handler.c parse_map.c parse_utils.c draw_map.c draw_line.c init.c adjust_z.c scale_shift.c hook.c free.c
-OBJS = $(SRCS:.c=.o)
+SRCS_FILES = $(addprefix $(SRCS_DIR)/, $(SRCS))
+OBJS = $(SRCS_FILES:.c=.o)
 
 MLX_DIR = ./minilibx
 MLX = $(MLX_DIR)/libmlx_Linux.a
@@ -20,7 +22,7 @@ $(NAME): $(OBJS)
 
 all: $(NAME)
 
-%.o: %.c Makefile fdf.h
+%.o: %.c Makefile include/fdf.h
 	$(CC) $(CFLAGS) -I . -I $(MLX_DIR) -c $< -o $@
 
 clean:
