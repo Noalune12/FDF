@@ -6,7 +6,7 @@
 /*   By: lbuisson <lbuisson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:12:03 by lbuisson          #+#    #+#             */
-/*   Updated: 2024/12/17 17:30:04 by lbuisson         ###   ########lyon.fr   */
+/*   Updated: 2024/12/18 07:33:38 by lbuisson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ t_point	calculate_isometric(t_map point, t_params params)
 	iso_point.iso_x = (point.x - point.y) * cos(params.angle) * params.scale;
 	iso_point.iso_y = ((point.x + point.y) * sin(params.angle) - point.z
 			* params.h_z) * params.scale;
-// 	iso_point.iso_x = (point.x * cos(params.angle) - point.y * sin(params.angle)) * params.scale;
-	// iso_point.iso_y = (point.x * sin(params.angle) + point.y * cos(params.angle) - point.z * params.h_z) * params.scale;
 	iso_point.iso_x = iso_point.iso_x + params.shift_x;
 	iso_point.iso_y = iso_point.iso_y + params.shift_y;
 	return (iso_point);

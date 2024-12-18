@@ -6,7 +6,7 @@
 /*   By: lbuisson <lbuisson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:11:44 by lbuisson          #+#    #+#             */
-/*   Updated: 2024/12/17 17:11:45 by lbuisson         ###   ########lyon.fr   */
+/*   Updated: 2024/12/18 07:31:32 by lbuisson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FDF_H
 
 # include <stdlib.h>
-# include <unistd.h>
 # include <stdio.h>
 # include "../minilibx/mlx.h"
 # include <math.h>
@@ -50,8 +49,6 @@ typedef struct s_info
 {
 	int		map_width;
 	int		map_height;
-	float	z_min;
-	float	z_max;
 }	t_info;
 
 typedef struct s_point

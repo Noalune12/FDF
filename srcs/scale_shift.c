@@ -6,7 +6,7 @@
 /*   By: lbuisson <lbuisson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:12:48 by lbuisson          #+#    #+#             */
-/*   Updated: 2024/12/17 17:25:17 by lbuisson         ###   ########lyon.fr   */
+/*   Updated: 2024/12/18 07:30:41 by lbuisson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,6 @@ static t_point	calculate_isometric_shift(t_map point, t_params params)
 	iso_point.iso_x = (point.x - point.y) * cos(params.angle);
 	iso_point.iso_y = ((point.x + point.y) * sin(params.angle)
 			- point.z * params.h_z);
-	// iso_point.iso_x = (point.x * cos(params.angle) - point.y * sin(params.angle));
-	// iso_point.iso_y = (point.x * sin(params.angle) + point.y * cos(params.angle) - point.z * params.h_z);
-
 	return (iso_point);
 }
 
