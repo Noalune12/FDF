@@ -6,7 +6,7 @@
 #    By: lbuisson <lbuisson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/17 17:11:29 by lbuisson          #+#    #+#              #
-#    Updated: 2024/12/17 17:11:31 by lbuisson         ###   ########lyon.fr    #
+#    Updated: 2024/12/18 07:36:07 by lbuisson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SRCS_DIR = srcs
-SRCS = main.c error_handler.c parse_map.c parse_utils.c map_width_height.c map_checker.c draw_map.c draw_line.c init.c adjust_z.c scale_shift.c hook.c free.c
+SRCS = main.c error_handler.c parse_map.c parse_utils.c map_width_height.c \
+	map_checker.c draw_map.c draw_line.c init.c adjust_z.c scale_shift.c \
+	hook.c free.c
 SRCS_FILES = $(addprefix $(SRCS_DIR)/, $(SRCS))
 OBJS = $(SRCS_FILES:.c=.o)
 

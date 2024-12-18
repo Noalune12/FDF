@@ -6,7 +6,7 @@
 /*   By: lbuisson <lbuisson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:12:23 by lbuisson          #+#    #+#             */
-/*   Updated: 2024/12/17 17:13:29 by lbuisson         ###   ########lyon.fr   */
+/*   Updated: 2024/12/18 07:39:09 by lbuisson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ int	error_handler_parsing(int error_code, int *fd)
 {
 	if (fd)
 		close(*fd);
+	if (error_code == 0)
+	{
+		errno = EINVAL;
+		perror("File is not .fdf");
+	}
 	if (error_code == 1)
 	{
 		errno = ENOENT;

@@ -6,7 +6,7 @@
 /*   By: lbuisson <lbuisson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:12:42 by lbuisson          #+#    #+#             */
-/*   Updated: 2024/12/18 07:29:39 by lbuisson         ###   ########lyon.fr   */
+/*   Updated: 2024/12/18 07:38:44 by lbuisson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,23 @@ static int	allocate_map(t_map ***map, t_params *params, char *file)
 	return (0);
 }
 
+static int	check_file_name(char *file)
+{
+	int	i;
+
+	i = 0;
+	while (file[i])
+		i++;
+	if (i < 5 || file[i - 1] != 'f' || file[i - 2] != 'd' || file[i - 3] != 'f'
+		|| file[i - 4] != '.')
+		return (-1);
+	return (0);
+}
+
 int	parse_map(t_map ***map, t_params *params, char *file)
 {
+	if (check_file_name(file) == -1)
+		return (error_handler_parsing(0, NULL));
 	if (allocate_map(map, params, file) == -1)
 		return (-1);
 	if (fill_map(map, params, file) == -1)
